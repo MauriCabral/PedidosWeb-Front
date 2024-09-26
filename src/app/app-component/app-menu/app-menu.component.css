@@ -1,0 +1,28 @@
+.pizza-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;  
+    width: 200px;
+    margin-right: 50px;       
+}
+
+.pizza-list {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-center;
+}
+
+.class-img {
+    height: 200px;
+    width: 200px;
+}
+
+.pizza-menu {
+    margin-left: 120px;
+    margin-top: 40px;
+}
+
+.pizza-item p {
+    margin: 10px 0; 
+}

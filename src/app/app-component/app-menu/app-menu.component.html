@@ -1,0 +1,11 @@
+<div class="pizza-menu">
+  <div *ngIf="!pizzas.length">No hay pizzas disponibles.</div>
+  <div class="pizza-list">
+    <div *ngFor="let pizza of pizzas" class="pizza-item">
+      <h3>{{ pizza.nombre }}</h3>
+      <img class="class-img" [src]="pizza.imagen" alt="{{ pizza.nombre }}" (click)="onDetallePizzaClick(pizza)"/>
+      <p>Descripcion: {{ pizza.descripcion }}</p>
+      <p>Precio: ${{ pizza.precio_total }}</p>
+    </div>
+  </div>
+</div>
