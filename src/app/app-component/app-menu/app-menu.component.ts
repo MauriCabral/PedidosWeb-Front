@@ -1,33 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzaService, Pizza } from '../../app-service/pizza-service/pizza-service.service';
+import { ToppingPizzaService, ToppingPizza } from '../../app-service/topping-pizza-service/topping-pizza-service.service';
 import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AppDetallePizzaComponent } from '../app-detalle-pizza/app-detalle-pizza.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-app-menu',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatGridListModule, MatCheckboxModule],
   templateUrl: './app-menu.component.html',
   styleUrls: ['./app-menu.component.css'] 
 })
 
 export class AppMenuComponent implements OnInit {
+  
   pizzas: Pizza[] = [];
+  toppingPizzas: ToppingPizza[] = [];
 
-  constructor(private pizzaService: PizzaService, public dialog: MatDialog) {}
+  selectedPizza: Pizza | null = null;
+  quantity: number = 1;
+
+  constructor(private pizzaService: PizzaService,
+    private toppingPizzaService: ToppingPizzaService
+  ) {}
 
   ngOnInit(): void {
     this.pizzaService.getPizzas().subscribe((data: Pizza[]) => {
       this.pizzas = data;
     });
+    this.toppingPizzaService.getToppingPizzas().subscribe((data: ToppingPizza[]) => {
+      this.toppingPizzas = data;
+    });
   }
 
   onDetallePizzaClick(pizza: Pizza): void {
-      this.dialog.open(AppDetallePizzaComponent, {
-        width: '1000px', 
-        height: '600px',
-        data: { pizza: pizza }  
-    });
+    this.selectedPizza = pizza;
+  }
+
+  increaseQuantity(): void {
+    this.quantity += 1; 
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity -= 1; 
+    }
   }
 }

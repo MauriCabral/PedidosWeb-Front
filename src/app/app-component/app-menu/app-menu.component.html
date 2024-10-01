@@ -1,11 +1,46 @@
 <div class="pizza-menu">
   <div *ngIf="!pizzas.length">No hay pizzas disponibles.</div>
+  
   <div class="pizza-list">
     <div *ngFor="let pizza of pizzas" class="pizza-item">
       <h3>{{ pizza.nombre }}</h3>
       <img class="class-img" [src]="pizza.imagen" alt="{{ pizza.nombre }}" (click)="onDetallePizzaClick(pizza)"/>
-      <p>Descripcion: {{ pizza.descripcion }}</p>
       <p>Precio: ${{ pizza.precio_total }}</p>
+    </div>
+  </div>
+  
+  <div *ngIf="selectedPizza" class="details-grid">
+    <div class="pizza-detail">
+      <div class="pizza-image-container">
+        <img [src]="selectedPizza.imagen" class="pizza-detail-img" alt="{{ selectedPizza.nombre }}"/>
+        <div class="pizza-detail-name">{{ selectedPizza.nombre }}</div>
+      </div>
+      
+      <div class="details-content">
+        <strong>Descripción:</strong>
+        <p>{{ selectedPizza.descripcion }}</p>
+        
+        <div class="topping-pizza">
+          <span class="topping-title">Agregar Toppings:</span>
+          <div class="topping-list">
+            <mat-checkbox *ngFor="let topping of toppingPizzas" class="topping-item">
+              {{ topping.nombre }}
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="fixed-footer">
+      <div class="quantity-selector">
+        <button (click)="decreaseQuantity()">-</button>
+        <span class="class-input-number">{{ quantity }}</span>
+        <button (click)="increaseQuantity()">+</button>
+      </div>
+      <div class="class-precio">
+        <strong>Precio:</strong> ${{ selectedPizza.precio_total }}
+      </div>
+      <button mat-button class="class-button-pedir">Pedir</button>
     </div>
   </div>
 </div>

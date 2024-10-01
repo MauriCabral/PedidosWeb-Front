@@ -16,8 +16,10 @@
     height: 60px;
     border-radius: 10px;
     padding: 0 30px;
-    margin-right: 100px;
+    margin-right: 8%;
+    margin-left: 8%;
     margin-top: 50px;
+    box-sizing: border-box;
 }
 
 .class-stroked-button {
@@ -34,7 +36,7 @@
 .class-button-menu,
 .class-button-home {
   font-size: 20px;
-  margin-right: 20px;
+  margin-right: 8%;
   color: white !important;
 }
 
@@ -60,10 +62,77 @@
 @media (max-width: 768px) {
     .space-navbar {
       flex-direction: row; 
+      padding: 0 10px;
     }
   
     .class-navBar {
       justify-content: center; 
-      width: auto; 
-    }
+      width: auto;
+      margin-left: 5%;  
+      margin-right: 5%; 
+      margin-top: 20px; 
+      padding: 0 15px;
+  }
+
+  .class-stroked-button {
+      font-size: 18px;
+      height: 30px;
+      padding-inline: 10px;
+  }
+
+  .class-button-menu,
+  .class-button-home {
+      font-size: 18px;
+      margin-right: 5%;
+  }
+
+  .class-span {
+      font-size: 25px;
+      margin-left: 10px;
+      margin-top: 20px;
+  }
+
+}
+
+@media (max-width: 430px) {
+  .space-navbar {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 5px;
+  }
+
+  .class-navBar {
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      margin-left: 8%; 
+      margin-right: 8%;
+      margin-top: 10px; 
+      padding: 0 10px;
+      height: auto; 
+  }
+
+  .class-stroked-button {
+      font-size: 16px;
+      height: 28px;
+      padding-inline: 8px;
+      margin-left: 0;
+  }
+
+  .class-button-menu,
+  .class-button-home {
+      font-size: 16px;
+      margin-right: 2%;
+  }
+
+  .class-span {
+      font-size: 22px;
+      margin-left: 5px;
+      margin-top: 10px;
+  }
+
+  .pizza-icon {
+      font-size: 30px;
+      margin-top: 5px;
+  }
 }
