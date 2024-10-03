@@ -21,6 +21,8 @@ export class AppMenuComponent implements OnInit {
   selectedPizza: Pizza | null = null;
   quantity: number = 1;
 
+  selectedToppings: { topping: ToppingPizza, extra: boolean }[] = [];
+
   constructor(private pizzaService: PizzaService,
     private toppingPizzaService: ToppingPizzaService
   ) {}
@@ -45,6 +47,21 @@ export class AppMenuComponent implements OnInit {
   decreaseQuantity(): void {
     if (this.quantity > 1) {
       this.quantity -= 1; 
+    }
+  }
+
+  toggleTopping(topping: ToppingPizza, isChecked: boolean, action: string): void {
+    if (isChecked) {
+      if (action === 'extra') {
+        this.selectedToppings.push({ topping: topping, extra: true });
+      } else if (action === 'quitar') {
+        this.selectedToppings.push({ topping: topping, extra: false });
+      }
+    } else {
+      const index = this.selectedToppings.findIndex(t => t.topping === topping && t.extra === (action === 'extra'));
+      if (index > -1) {
+        this.selectedToppings.splice(index, 1);
+      }
     }
   }
 }

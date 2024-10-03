@@ -23,7 +23,17 @@
         <div class="topping-pizza">
           <span class="topping-title">Agregar Toppings:</span>
           <div class="topping-list">
-            <mat-checkbox *ngFor="let topping of toppingPizzas" class="topping-item">
+            <mat-checkbox class="topping-item" 
+            *ngFor="let topping of toppingPizzas" 
+            (change)="toggleTopping(topping, $event.checked, 'quitar')">
+              {{ topping.nombre }}
+            </mat-checkbox>
+          </div>
+          <span class="topping-title">Quitar Toppings:</span>
+          <div class="topping-list">
+            <mat-checkbox class="topping-item" class="topping-item" 
+            *ngFor="let topping of toppingPizzas" 
+            (change)="toggleTopping(topping, $event.checked, 'extra')">
               {{ topping.nombre }}
             </mat-checkbox>
           </div>
