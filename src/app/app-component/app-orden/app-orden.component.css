@@ -1,7 +1,33 @@
 .class-order {
-    margin: 20px;
-    height: calc(100% - 50px); 
-    overflow-y: auto;
+    margin: 10px;
+    flex-direction: column;
+    display: flex;
+    height: calc(100% - 50px);
+    position: relative;
+    overflow: hidden;
+}
+
+.class-order-list {
+    overflow-y: auto;  
+    flex-grow: 1;  
+    margin: 0;  
+    padding: 10px; 
+}
+
+.class-order-list ul {
+    padding: 0; 
+    margin: 0; 
+    list-style-type: none; 
+}
+
+.class-order-list > ul > li {
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0; 
 }
 
 .fixed-footer {
@@ -11,10 +37,106 @@
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    position: absolute; 
+    position: sticky;
     bottom: 0; 
     left: 0;
     right: 0;
-    height: 30px; 
+    height: 50px; 
     z-index: 10;
+}
+
+.class-title-resumen {
+    margin: 0;
+    margin-left: 10px; 
+}
+
+.class-order-pedidos-nombre {
+    font-family: cursive;
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.class-topping {
+    margin-top: 5px; 
+}
+
+.class-toppings-details {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 5px; 
+    margin-bottom: 5px;
+}
+
+.class-cantidad-container {
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+.class-precio-container {
+    text-align: center;
+    align-items: center; 
+    margin-top: 10px; 
+}
+
+.class-precio {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-top: 10px; 
+}
+
+.class-precio-valor {
+    font-size: 14px; 
+}
+
+.class-precio-total {
+    color: white;
+}
+
+.class-btn-aceptar {
+    background-color: white; 
+    color: black; 
+    border: none; 
+    padding: 7px 12px; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.class-btn-cerrar {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    border: none;
+    position: absolute;
+    right: 10px; 
+    font-size: 20px; 
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.class-btn-cerrar:hover {
+    color: green; 
+}
+
+.class-btn-aceptar:hover {
+    background-color: green; 
+}
+
+.class-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.class-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-bottom: 10px; 
+    margin: 10px;
+}
+
+mat-icon {
+    color: red;
+    cursor: pointer;
 }

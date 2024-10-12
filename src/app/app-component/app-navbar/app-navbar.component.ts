@@ -34,14 +34,13 @@ export class AppNavbarComponent {
 
   openOrderDialog(): void {
     const orderDetails = this.orderService.getOrderDetails();
-    if(!orderDetails) {
+    if (!orderDetails || orderDetails.length === 0) {
       this.toastrService.error('No hay pedidos en la orden.', 'Error');
       return;
-  }
-
+    }
     this.dialog.open(AppOrdenComponent, {
       width: '600px',
-      height: '400px',
+      height: '500px',
       data: orderDetails,
     });
   }

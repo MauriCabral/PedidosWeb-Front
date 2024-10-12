@@ -123,7 +123,7 @@
 
 
 .class-btn-cerrar:hover {
-    color: blue; 
+    color: green; 
 }
 
 .class-grid {
@@ -193,8 +193,12 @@
     cursor: pointer
 }
 
+.class-name-pizza {
+    font-family: cursive;
+}
+
 .class-button-pedir:hover {
-    background-color: #303f9f; 
+    background-color: green; 
 }
 
 @media (max-width: 768px) {

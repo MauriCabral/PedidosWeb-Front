@@ -3,7 +3,7 @@
 
   <div class="pizza-list">
     <div *ngFor="let pizza of pizzas" class="pizza-item">
-      <h3>{{ pizza.nombre }}</h3>
+      <h3 class="class-name-pizza">{{ pizza.nombre }}</h3>
       <img class="class-img" [src]="pizza.imagen" alt="{{ pizza.nombre }}" (click)="onDetallePizzaClick(pizza)" />
       <p>Precio: ${{ pizza.precio_total }}</p>
     </div>

@@ -10,5 +10,5 @@ import { provideToastr } from 'ngx-toastr';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideHttpClient(withFetch()), provideAnimations(), provideToastr({timeOut: 900, preventDuplicates: true, positionClass: 'toast-top-center'}),]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideHttpClient(withFetch()), provideAnimations(), provideToastr({timeOut: 900, preventDuplicates: true, positionClass: 'toast-top-center'}), provideAnimationsAsync(),]
 };

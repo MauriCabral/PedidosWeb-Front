@@ -1,21 +1,47 @@
 <div class="class-order">
-  <h2>Resumen de tu Pedido</h2>
-  <div *ngIf="orderDetails">
-    <h3>{{ orderDetails.pizza.nombre }}</h3>
-    <p><strong>Cantidad:</strong> {{ orderDetails.quantity }}</p>
-    <h4>Toppings seleccionados:</h4>
-    <ul>
-      <li *ngFor="let topping of orderDetails.toppings">
-        {{ topping.topping.nombre }} 
-        <span *ngIf="topping.extra">(Extra)</span>
-      </li>
-    </ul>
-    <p><strong>Precio Total:</strong> ${{ orderDetails.totalPrice }}</p>
+  <div class="class-header">
+    <h3 class="class-title-resumen">Resumen de tu Pedido</h3>
+    <button class="class-btn-cerrar" (click)="closeOrden()">X</button>
   </div>
-  <div *ngIf="!orderDetails">
-    <p>No hay detalles del pedido.</p>
+  
+  <div class="class-order-list" *ngIf="orderDetails && orderDetails.length > 0">
+      <ul>
+          <li *ngFor="let order of orderDetails; let i = index">
+              <div class="class-order-header">
+                  <h4 class="class-order-pedidos-nombre">{{ order.pizza.nombre }}</h4>
+                  <button mat-icon-button (click)="removeOrder(i)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+              </div>
+              <span class="class-topping" *ngIf="order.addedToppings && order.addedToppings.length > 0">Toppings extras:</span>
+              <ul *ngIf="order.addedToppings && order.addedToppings.length > 0">
+                  <li class="class-toppings-details" *ngFor="let topping of order.addedToppings">
+                      {{ topping.topping.nombre }}  ${{ topping.topping.precio }}
+                  </li>
+              </ul>
+
+              <span class="class-topping" *ngIf="order.removedToppings && order.removedToppings.length > 0">Toppings eliminados:</span>
+              <ul *ngIf="order.removedToppings && order.removedToppings.length > 0">
+                  <li class="class-toppings-details" *ngFor="let topping of order.removedToppings">
+                      {{ topping.topping.nombre }}
+                  </li>
+              </ul>
+
+              <div class="class-cantidad-container">
+                <span class="class-cantidad">Cantidad:</span> {{ order.quantity }}
+            </div>
+            <div class="class-precio-container">
+                <span class="class-precio">Precio:</span> <span class="class-precio-valor"> ${{ order.totalPrice }}</span>
+            </div>
+            
+          </li>
+      </ul>
+  </div>
+  <div *ngIf="!orderDetails || orderDetails.length === 0">
+      <p>No hay detalles del pedido.</p>
   </div>
 </div>
 <div class="fixed-footer">
-  <button mat-button (click)="closeDialog()">Cerrar</button>
+  <span class="class-precio-total">Precio Total: ${{ calculateTotalPrice() }} </span>
+  <button class="class-btn-aceptar" (click)="acceptOrden()">Aceptar</button>
 </div>

@@ -21,9 +21,10 @@ export class AppMenuComponent implements OnInit {
   toppingPizzas: ToppingPizza[] = [];
   selectedPizza: Pizza | null = null;
   quantity: number = 1;
-  selectedToppings: { topping: ToppingPizza, extra: boolean }[] = [];
   totalPrice: number = 0;
-  savedOrders: any[] = [];
+  addedToppings: { topping: ToppingPizza, extra: boolean }[] = [];
+  removedToppings: { topping: ToppingPizza, extra: boolean }[] = [];
+
 
   constructor(private pizzaService: PizzaService,
     private toppingPizzaService: ToppingPizzaService,
@@ -43,7 +44,8 @@ export class AppMenuComponent implements OnInit {
   onDetallePizzaClick(pizza: Pizza): void {
     this.selectedPizza = pizza;
     this.totalPrice = pizza.precio_total;
-    this.selectedToppings = [];
+    this.addedToppings = [];    
+    this.removedToppings = [];
   }
 
   increaseQuantity(): void {
@@ -61,14 +63,21 @@ export class AppMenuComponent implements OnInit {
   toggleTopping(topping: ToppingPizza, isChecked: boolean, action: string): void {
     if (isChecked) {
       if (action === 'extra') {
-        this.selectedToppings.push({ topping: topping, extra: true });
+        this.addedToppings.push({ topping: topping, extra: true });
       } else if (action === 'quitar') {
-        this.selectedToppings.push({ topping: topping, extra: false });
+        this.removedToppings.push({ topping: topping, extra: false });
       }
     } else {
-      const index = this.selectedToppings.findIndex(t => t.topping === topping && t.extra === (action === 'extra'));
-      if (index > -1) {
-        this.selectedToppings.splice(index, 1);
+      if (action === 'extra') {
+        const index = this.addedToppings.findIndex(t => t.topping === topping);
+        if (index > -1) {
+          this.addedToppings.splice(index, 1);
+        }
+      } else if (action === 'quitar') {
+        const index = this.removedToppings.findIndex(t => t.topping === topping);
+        if (index > -1) {
+          this.removedToppings.splice(index, 1);
+        }
       }
     }
     this.calculateTotalPrice();
@@ -76,7 +85,7 @@ export class AppMenuComponent implements OnInit {
 
   calculateTotalPrice(): void {
     let total = this.selectedPizza ? this.selectedPizza.precio_total : 0;
-    this.selectedToppings.forEach(selected => {
+    this.addedToppings.forEach(selected => {
       if (selected.extra) {
         total += selected.topping.precio;
       }
@@ -89,16 +98,20 @@ export class AppMenuComponent implements OnInit {
       console.error('No se ha seleccionado ninguna pizza.');
       return;
     }
+
     const orderDetails = {
       pizza: this.selectedPizza,
-      toppings: this.selectedToppings,
+      addedToppings: this.addedToppings,
+      removedToppings: this.removedToppings,
       totalPrice: this.totalPrice,
       quantity: this.quantity
-    };  
+    }; 
     this.orderService.setOrderDetails(orderDetails);
     console.log('Pedido guardado en el servicio.');
     this.toastrService.success('Pedido agregado a la orden.');
     this.selectedPizza = null;
+    this.addedToppings = [];
+    this.removedToppings = [];
   }
   
   close() { 

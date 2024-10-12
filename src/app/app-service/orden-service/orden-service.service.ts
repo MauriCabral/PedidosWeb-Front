@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class OrdenService {
 
-  private orderDetails: any = null;
+  private orderDetails: any[] = []; 
 
   setOrderDetails(order: any): void {
-    this.orderDetails = order;
+    this.orderDetails.push(order); 
   }
 
-  getOrderDetails(): any {
+  getOrderDetails(): any[] {
     return this.orderDetails;
   }
 
   clearOrderDetails(): void {
-    this.orderDetails = null;
+    this.orderDetails = [];
   }
 }
