@@ -1,0 +1,21 @@
+<div class="class-order">
+  <h2>Resumen de tu Pedido</h2>
+  <div *ngIf="orderDetails">
+    <h3>{{ orderDetails.pizza.nombre }}</h3>
+    <p><strong>Cantidad:</strong> {{ orderDetails.quantity }}</p>
+    <h4>Toppings seleccionados:</h4>
+    <ul>
+      <li *ngFor="let topping of orderDetails.toppings">
+        {{ topping.topping.nombre }} 
+        <span *ngIf="topping.extra">(Extra)</span>
+      </li>
+    </ul>
+    <p><strong>Precio Total:</strong> ${{ orderDetails.totalPrice }}</p>
+  </div>
+  <div *ngIf="!orderDetails">
+    <p>No hay detalles del pedido.</p>
+  </div>
+</div>
+<div class="fixed-footer">
+  <button mat-button (click)="closeDialog()">Cerrar</button>
+</div>

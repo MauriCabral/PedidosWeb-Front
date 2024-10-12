@@ -57,7 +57,7 @@
     max-width: 400px; 
     height: 82vh;
     position: relative;
-    transform: translateX(-16%);
+    transform: translateX(-16.5%);
     border-radius: 8px;
     z-index: 10;
     overflow-y: auto; 
@@ -106,6 +106,23 @@
     border-radius: 8px;
     z-index: 1;
     margin: 0 0 2px 2px;
+}
+
+.class-btn-cerrar {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    font-size: 20px; 
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+.class-btn-cerrar:hover {
+    color: darkred; 
 }
 
 .class-grid {
@@ -178,7 +195,6 @@
 .class-button-pedir:hover {
     background-color: #303f9f; 
 }
-
 
 @media (max-width: 768px) {
     .pizza-menu {
