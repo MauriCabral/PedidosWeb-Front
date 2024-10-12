@@ -1,0 +1,18 @@
+.inicio-imagen {
+    text-align: center; 
+    height: 90vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+}
+
+.inicio-imagen img {
+    max-width: 100%; 
+    max-height: 90vh; 
+    height: auto; 
+    width: auto; 
+    border-radius: 8px; 
+    display: block; 
+    margin: 0 auto;
+}

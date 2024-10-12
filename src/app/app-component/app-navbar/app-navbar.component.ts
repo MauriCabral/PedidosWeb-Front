@@ -24,12 +24,11 @@ export class AppNavbarComponent {
   ) {}
 
   onHomeClick(): void {
-    window.location.href = 'http://localhost:4200'; 
+    this.router.navigate(['/home']);
   }
 
   onMenuClick(): void {
-    this.router.navigate(['/menu']).then(() => {
-    });
+    this.router.navigate(['/menu']);
   }
 
   openOrderDialog(): void {

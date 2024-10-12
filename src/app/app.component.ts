@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppNavbarComponent } from './app-component/app-navbar/app-navbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,5 +11,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'front-pedidosWeb';
 }
